@@ -14,6 +14,24 @@ section.left, section.right {
 section.left { float: left; margin: 0 2% 0 4%; }
 section.right { float: right; margin: 0 4% 0 2%; }
 
+#mydiv {
+  border: 2px solid;
+  padding: 20px;
+  width: 300px;
+  resize: both;
+  overflow: auto;
+  position: absolute;
+  background-color: #f1f1f1;
+}
+
+#mydivheader {
+  padding: 20px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
 
 
 .indent { margin-left:40px; }
