@@ -1,0 +1,19 @@
+body { padding: 0; margin: 0; min-width: 640px;}
+
+header, footer {
+    padding: 0; margin: 0;
+    width: 100%;
+    background-color: blue;
+}
+header { height: 50px; }
+footer { height: 25px; clear: both; }
+
+section.left, section.right {
+    width: 44%; text-align: justify;
+}
+section.left { float: left; margin: 0 2% 0 4%; }
+section.right { float: right; margin: 0 4% 0 2%; }
+
+
+
+.indent { margin-left:40px; }
