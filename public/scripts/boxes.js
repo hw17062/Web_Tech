@@ -41,3 +41,17 @@
       document.onmousemove = null;
     }
   }
+
+
+  function createBox(){
+    var box = document.createElement('div');
+    box.classList.add('draggable');
+    box.setAttribute("id", "mydiv");
+    var header = document.createElement('div');
+    header.classList.add('dragHeader');
+    header.setAttribute("id", "mydivheader");
+    var textnode = document.createTextNode("Title");
+    header.appendChild(textnode);
+    box.appendChild(header);
+    document.body.appendChild(box);
+  }

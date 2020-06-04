@@ -14,7 +14,7 @@ section.left, section.right {
 section.left { float: left; margin: 0 2% 0 4%; }
 section.right { float: right; margin: 0 4% 0 2%; }
 
-#mydiv {
+.draggable {
   border: 2px solid;
   padding: 20px;
   width: 300px;
@@ -24,7 +24,7 @@ section.right { float: right; margin: 0 4% 0 2%; }
   background-color: #f1f1f1;
 }
 
-#mydivheader {
+.dragHeader {
   padding: 20px;
   cursor: move;
   z-index: 10;
