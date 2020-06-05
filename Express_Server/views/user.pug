@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 User info
+
+  p welcome #{user.nickname} , we hope you enjoy your time here
+
+  div.NavButtons
+  a(class = 'button',href="/") Home
+  a(class = 'button', href="/logout") Log Out
