@@ -1,18 +1,37 @@
 var express = require('express');
+const app = express();
+const http = require('http');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
+const sqlite3 = require('sqlite3').verbose();
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 var flash = require('connect-flash');
+
+
 var userInViews = require('./lib/middleware/userInViews');
-var authRouter = require('./routes/auth');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 dotenv.config();
+
+const server = http.createServer(app);
+server.listen(80, () => {
+  console.log('HTTP server listening on port 80');
+});
+
+// config express-session
+let startSessions = require('./lib/scripts/sessionSetup')(app);
+
+
+// set up the disk database
+let db = new sqlite3.Database('./userStore/db.sqlite', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the SQlite database.');
+});
+
 
 // Configure Passport to use Auth0
 var strategy = new Auth0Strategy(
@@ -42,7 +61,9 @@ passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
-const app = express();
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,31 +72,6 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(cookieParser());
 
-// config express-session
-var sess = {
-  secret: '=*KFT~{x7qD@G(i?ab?+%zfcJX<!',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true
-};
-
-if (app.get('env') === 'production') {
-  // If you are using a hosting provider which uses a proxy (eg. Heroku),
-  // comment in the following app.set configuration command
-  //
-  // Trust first proxy, to prevent "Unable to verify authorization request state."
-  // errors with passport-auth0.
-  // Ref: https://github.com/auth0/passport-auth0/issues/70#issuecomment-480771614
-  // Ref: https://www.npmjs.com/package/express-session#cookiesecure
-  // app.set('trust proxy', 1);
-
-  sess.cookie.secure = true; // serve secure cookies, requires https
-}
-
-app.use(session(sess));
-
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(flash());
@@ -91,10 +87,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+// Start routing
 app.use(userInViews());
-app.use('/', authRouter);
-app.use('/', indexRouter);
-app.use('/', usersRouter);
+var routerAll = require('./routes/routerAll')(app);
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -115,15 +111,24 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+}else {
+  // Production error handler
+  // No stacktraces leaked to user
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: {}
+    });
+  });
 }
 
-// Production error handler
-// No stacktraces leaked to user
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+
+// keep an ear out for a stop signil
+const io = require('socket.io')(server);
+io.on('connection', (socketServer) => {
+  socketServer.on('npmStop', () => {
+    process.exit(0);
   });
 });
 

@@ -9,7 +9,7 @@ block content
       span.Details Access your personalised page:
     div.NavButtons
     a(class = 'button',href="/") Home
-      if locals.user
+      if locals.session.user
         a(class = 'button', href="/user") Profile
 
         a(class = 'button', href="/logout") Log Out
