@@ -13,17 +13,22 @@
     <button onclick="createBox()" id="newBox"> New </button>
 
     <div id="content">
+      <ul id="items">
 
-      <div id="boxSlots"> </div>
-      <div id="boxPile"> </div>
-
-
+      </ul>
     </div>
 
-    <script>
+    <script type="text/javascript">
 
-      init();
+      $(document).ready(function() {
+         $(function() {
+              $( "#items" ).sortable();
+          });
 
+      $(function() {
+              $('.list').resizable();
+          });
+      });
     </script>
 
   </body>

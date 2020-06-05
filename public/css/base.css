@@ -25,88 +25,45 @@ section.right { float: right; margin: 0 4% 0 2%; }
   user-select: none;
 }
 
-
-#boxPile {
-  margin: 0 auto;
-  width: 100px;
-  height: 120px
+.list {
+    text-align: center;
+    cursor: pointer;
+    font-family: Geneva,Arial,Helvetica,sans-serif;
+    border: 1px solid gray;
+    background: #666;
+  	color: #fff;
+  	font-size: 30px;
+    resize: both;
+  	overflow: auto;
 }
 
-#boxSlots {
-  margin: 50px auto 0 auto;
-  background: #ddf;
-  width: 910px;
-  height: 800px;
-  padding: 20px;
-  border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
-  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+#items .ui-selected {
+    background: red;
+    color: white;
+    font-weight: bold;
 }
 
-
-
-#boxSlots div{
-  float: left;
-  width: 150px;
-  height: 150px;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 0;
-  border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  margin: 0 0 0 10px;
-  background: #fff;
+#items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-#boxPile div {
-  float: left;
-  width: 58px;
-  height: 78px;
-  padding: 10px;
-  padding-top: 40px;
-  padding-bottom: 0;
-  border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  margin: 0 0 0 10px;
-  background: #fff;
-  resize: both;
-  overflow: auto;
+#items li {
+    float: left;
+    margin: 2px;
+    padding: 2px;
+    width: 80px;
+    height: 100px;
+    line-height: 50px;
 }
 
-
-#boxSlots div:first-child, #boxPile div:first-child {
-  margin-left: 0;
+.highlight {
+    border: 2px solid red;
+    font-weight: bold;
+    font-size: 50px;
+    background-color: lightblue;
 }
-
-#boxSlots div.hovered {
-  background: #aaa;
-}
-
-#boxSlots div {
-  border-style: dashed;
-}
-
-#boxPile div {
-  background: #666;
-  color: #fff;
-  font-size: 50px;
-  text-shadow: 0 0 3px #000;
-}
-
-#boxPile div.ui-draggable-dragging {
-  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
-}
-
 
 
 .indent { margin-left:40px; }

@@ -1,45 +1,18 @@
-$( init );
-
-function init() {
 
 
-  $('#boxPile').html( '' );
-  $('#boxSlots').html( '' );
-
-
-
-
-}
-
-function handleBoxDrop( event, ui ) {
-  var slotNumber = $(this).data( 'number' );
-  var boxNumber = ui.draggable.data( 'number' );
-
-
-  ui.draggable.addClass( 'correct' );
-  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-  ui.draggable.draggable( 'option', 'revert', false );
-
-}
 
 function createBox(){
 
-	var number = Math.random() - .5
-    $('<div>' + '</div>').data( 'number', number ).attr( 'id', 'box'+number ).appendTo( '#boxPile' ).draggable( {
-      containment: '#content',
-      stack: '#boxPile div',
-      cursor: 'move',
-      revert: true
-    } );
+    var number = Math.random() - .5;
+    $('<li>' + '</li>').attr('class', 'list').attr('id','slot'+ number).appendTo( '#items' ).sortable();
 
-    $('<div>' + '</div>').data( 'number', number ).appendTo( '#boxSlots' ).droppable( {
-      accept: '#boxPile div',
-      hoverClass: 'hovered',
-      drop: handleBoxDrop
-    } );
+    var slot = document.getElementById('slot' + number);
+    $('<button>X</button>').attr('id','close'+number).appendTo(slot);
 
-    var box = document.getElementById('box' + number);
-    var destination = document.getElementById('slot' + number);
-   	box.position( { of: destination, my: 'left top', at: 'left top' } );
 
+    var closeBtn = document.getElementById('close' + number);
+    $(closeBtn).click(function () {
+      $(slot).remove();
+      event.stopPropagation();
+    })
 }
