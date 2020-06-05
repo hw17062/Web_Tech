@@ -3,7 +3,7 @@ extends layout
 block content
   h1 User info
 
-  p welcome #{session.user} , we hope you enjoy your time here
+  p welcome #{locals.session.username} , we hope you enjoy your time here
 
   div.NavButtons
   a(class = 'button',href="/") Home
