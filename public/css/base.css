@@ -26,12 +26,9 @@ section.right { float: right; margin: 0 4% 0 2%; }
 }
 
 
-
-
 #boxPile {
   margin: 0 auto;
-  background: #ffd;
-  width: 910px;
+  width: 100px;
   height: 120px
 }
 
@@ -39,7 +36,7 @@ section.right { float: right; margin: 0 4% 0 2%; }
   margin: 50px auto 0 auto;
   background: #ddf;
   width: 910px;
-  height: 120px;
+  height: 800px;
   padding: 20px;
   border: 2px solid #333;
   -moz-border-radius: 10px;
@@ -51,8 +48,23 @@ section.right { float: right; margin: 0 4% 0 2%; }
 }
 
 
-/* Individual cards and slots */
-#boxSlots div, #boxPile div {
+
+#boxSlots div{
+  float: left;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 0;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 0 10px;
+  background: #fff;
+}
+
+#boxPile div {
   float: left;
   width: 58px;
   height: 78px;
