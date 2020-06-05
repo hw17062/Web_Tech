@@ -4,29 +4,23 @@
   <head>
     <link rel="stylesheet" href="./css/base.css" />
     <script type="text/javascript" src="./scripts/boxes.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
     <meta charset="UTF-8"/>
     <title>Put Title Here</title>
   </head>
   <body>
-    <h1> test <button id="createBox"> New </button> </h1>
+    <div id="content">
 
-    <div class=draggable id="box1">
-      <div class=dragHeader id="mydivheader">Click here to move</div>
-      <p> Testing a box that can be resized </p>
+      <div id="boxPile"> </div>
+      <div id="boxSlots"> </div>
+
+
     </div>
-
 
     <script>
 
-      var x = document.getElementById("createBox");
-      x.addEventListener("click", createBox);
-
-
-      var draggableElements = document.getElementsByClassName("draggable");
-
-      for(var i = 0; i <draggableElements.length; i++){
-        dragElement(draggableElements[i]);
-      }
+      init();
 
     </script>
 

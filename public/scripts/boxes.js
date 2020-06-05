@@ -1,57 +1,51 @@
-"using strict";
-  // Make the DIV element draggable:
+$( init );
 
-  function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-      // if present, the header is where you move the DIV from:
-      document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-      // otherwise, move the DIV from anywhere inside the DIV:
-      elmnt.onmousedown = dragMouseDown;
-    }
+function init() {
 
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // get the mouse cursor position at startup:
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
-      document.onmousemove = elementDrag;
-    }
+  $('#successMessage').hide();
+  $('#successMessage').css( {
+    left: '580px',
+    top: '250px',
+    width: 0,
+    height: 0
+  } );
 
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // calculate the new cursor position:
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      // set the element's new position:
-      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
+  $('#boxPile').html( '' );
+  $('#boxSlots').html( '' );
 
-    function closeDragElement() {
-      /* stop moving when mouse button is released:*/
-      document.onmouseup = null;
-      document.onmousemove = null;
-    }
+  var numbers = [ 1, 2, 3, 4, 5 ];
+  numbers.sort( function() { return Math.random() - .5 } );
+
+  for ( var i=0; i<5; i++ ) {
+    $('<div>' + '</div>').data( 'number', numbers[i] ).attr( 'id', 'box'+numbers[i] ).appendTo( '#boxPile' ).draggable( {
+      containment: '#content',
+      stack: '#boxPile div',
+      cursor: 'move',
+      revert: true
+    } );
   }
 
-
-  function createBox(){
-    var box = document.createElement('div');
-    box.classList.add('draggable');
-    box.setAttribute("id", "mydiv");
-    var header = document.createElement('div');
-    header.classList.add('dragHeader');
-    header.setAttribute("id", "mydivheader");
-    var textnode = document.createTextNode("Title");
-    header.appendChild(textnode);
-    box.appendChild(header);
-    document.body.appendChild(box);
+  for ( var i=1; i<=5; i++ ) {
+    $('<div>' + '</div>').data( 'number', i ).appendTo( '#boxSlots' ).droppable( {
+      accept: '#boxPile div',
+      hoverClass: 'hovered',
+      drop: handleBoxDrop
+    } );
   }
+
+}
+
+function handleBoxDrop( event, ui ) {
+  var slotNumber = $(this).data( 'number' );
+  var boxNumber = ui.draggable.data( 'number' );
+
+
+  ui.draggable.addClass( 'correct' );
+  ui.draggable.draggable( 'disable' );
+  $(this).droppable( 'disable' );
+  ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+  ui.draggable.draggable( 'option', 'revert', false );
+
+
+
+}
