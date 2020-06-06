@@ -25,6 +25,15 @@ section.right { float: right; margin: 0 4% 0 2%; }
   user-select: none;
 }
 
+div.centred{
+  width: 92%;
+  margin: 4% 0 4% 0;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .list {
     text-align: center;
     cursor: pointer;
@@ -67,3 +76,29 @@ section.right { float: right; margin: 0 4% 0 2%; }
 
 
 .indent { margin-left:40px; }
+
+.button.home {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin: 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  box-shadow: 0 9px #999;
+}
+
+.button.home:hover, .button.home:focus{
+  background-color: #298203; /* Green */
+  color: white;
+}
+
+.button.home:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
