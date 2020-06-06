@@ -1,0 +1,219 @@
+body { padding: 0; margin: 0; min-width: 640px;}
+
+
+header, footer {
+    padding: 0; margin: 0;
+    width: 100%;
+    background-color: blue;
+}
+header { height: 50px; }
+footer { height: 25px; clear: both; }
+
+section.left, section.right {
+    width: 44%; text-align: justify;
+}
+section.left { float: left; margin: 0 2% 0 4%; }
+section.right { float: right; margin: 0 4% 0 2%; }
+
+/* Main content area */
+
+#content {
+  margin: 20px 10px;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+div.centred{
+  width: 92%;
+  margin: 4% 0 4% 0;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn {
+	float: right;
+}
+
+.list {
+    text-align: center;
+    cursor: pointer;
+    font-family: Geneva,Arial,Helvetica,sans-serif;
+    border: 1px solid gray;
+    background: #666;
+  	color: #fff;
+  	font-size: 30px;
+}
+
+#items .ui-selected {
+    background: red;
+    color: white;
+    font-weight: bold;
+}
+
+#items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#items li {
+    float: left;
+    margin: 2px;
+    padding: 2px;
+    width: 150px;
+    height: 200px;
+    line-height: 50px;
+}
+
+.highlight {
+    border: 2px solid red;
+    font-weight: bold;
+    font-size: 50px;
+    background-color: lightblue;
+}
+
+.ui-resizable { position: relative; float: left;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block; }
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 280px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: absolute;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  top: 25%;
+  left: 50%;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+.form-container input[type=text] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .saveBtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .saveBtn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.indent { margin-left:40px; }
+
+.button.home {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin: 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  box-shadow: 0 9px #999;
+}
+
+.button.home:hover, .button.home:focus{
+  background-color: #298203; /* Green */
+  color: white;
+}
+
+.button.home:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

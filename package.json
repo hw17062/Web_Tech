@@ -1,0 +1,30 @@
+{
+  "name": "express-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "stop": "node app.stop.js"
+  },
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^4.0.4",
+    "cookie-parser": "~1.4.4",
+    "core-js": "^3.6.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http": "0.0.1-security",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-auth0": "^1.3.2",
+    "pug": "^3.0.0",
+    "redis": "^3.0.2",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "sqlite3": "^4.2.0"
+  }
+}

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  div.View.WelcomeView(class='centred')
+    h1.Banner Hope Page Of Your Internet
+    div.Message
+      div.Title
+        h3 Improving your browsing experience
+      span.Details Access your personalised page:
+    div.NavButtons
+      if locals.session.username
+        a(class = 'button home', href="/user") Profile
+
+        a(class = 'button home', href="/logout") Log Out
+      else
+        a(class = 'button home', href="/login") Log In
