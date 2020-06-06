@@ -4,7 +4,6 @@ const http = require('http');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-const sqlite3 = require('sqlite3').verbose();
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
@@ -12,6 +11,7 @@ var flash = require('connect-flash');
 
 
 var userInViews = require('./lib/middleware/userInViews');
+var sessionData = require('./lib/middleware/sessionData');
 
 dotenv.config();
 
@@ -22,15 +22,6 @@ server.listen(80, () => {
 
 // config express-session
 let startSessions = require('./lib/scripts/sessionSetup')(app);
-
-
-// set up the disk database
-let db = new sqlite3.Database('./userStore/db.sqlite', (err) => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log('Connected to the SQlite database.');
-});
 
 
 // Configure Passport to use Auth0
@@ -89,8 +80,15 @@ app.use(function (req, res, next) {
 
 
 // Start routing
+app.use('/logout', (req,res,next) => {
+  req.session.destroy();
+  next();
+});
 app.use(userInViews());
+app.use(sessionData());
+
 var routerAll = require('./routes/routerAll')(app);
+
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -122,7 +120,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 
 // keep an ear out for a stop signil
 const io = require('socket.io')(server);
