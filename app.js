@@ -4,6 +4,10 @@ const http = require('http');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+<<<<<<< HEAD
+=======
+const sqlite3 = require('sqlite3').verbose();
+>>>>>>> ada
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
@@ -11,7 +15,10 @@ var flash = require('connect-flash');
 
 
 var userInViews = require('./lib/middleware/userInViews');
+<<<<<<< HEAD
 var sessionData = require('./lib/middleware/sessionData');
+=======
+>>>>>>> ada
 
 dotenv.config();
 
@@ -24,6 +31,18 @@ server.listen(80, () => {
 let startSessions = require('./lib/scripts/sessionSetup')(app);
 
 
+<<<<<<< HEAD
+=======
+// set up the disk database
+let db = new sqlite3.Database('./userStore/db.sqlite', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the SQlite database.');
+});
+
+
+>>>>>>> ada
 // Configure Passport to use Auth0
 var strategy = new Auth0Strategy(
   {
@@ -80,6 +99,7 @@ app.use(function (req, res, next) {
 
 
 // Start routing
+<<<<<<< HEAD
 app.use('/logout', (req,res,next) => {
   req.session.destroy();
   next();
@@ -90,6 +110,11 @@ app.use(sessionData());
 var routerAll = require('./routes/routerAll')(app);
 
 
+=======
+app.use(userInViews());
+var routerAll = require('./routes/routerAll')(app);
+
+>>>>>>> ada
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   const err = new Error('Not Found');
@@ -121,6 +146,10 @@ if (app.get('env') === 'development') {
   });
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ada
 // keep an ear out for a stop signil
 const io = require('socket.io')(server);
 io.on('connection', (socketServer) => {
