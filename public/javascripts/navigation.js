@@ -27,10 +27,18 @@ function closeTool() {
   document.getElementById("toolOpener").innerHTML = "<";
 }
 
-function openForm() {
+function openTabForm() {
       document.getElementById("formNewTab").style.display = "block";
     }
 
-function closeForm() {
+function closeTabForm() {
       document.getElementById("formNewTab").style.display = "none";
+}
+
+function openBookmarkForm() {
+      document.getElementById("bookmarkForm").style.display = "block";
+    }
+
+function closebookmarkForm() {
+      document.getElementById("bookmarkForm").style.display = "none";
 }
