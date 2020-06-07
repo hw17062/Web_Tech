@@ -23,7 +23,8 @@ function createBookmark(){
       event.stopPropagation();
     })
     $('<a href="'+text+'" target="_blank">'+ 'Go to page' + '</a>').attr('class', 'bookmarkLink').attr('id', 'pagelink' + number).appendTo(slot);
-  //  $('<a style="display:block" href="'+text+'" target="_blank">'+'</a>').attr('id', 'bookmarkLink').appendTo(slot);
+
+    closeBookmarkForm();
 
   }
 
@@ -80,6 +81,7 @@ function saveClass() {
     	var text = document.getElementsByName("name")[0].value;
       $('<a href="'+'#'+'">'+text+'</a>').attr('id', 'link').appendTo('#mySidenav');
       alert("Saved");
+      closeForm();
 }
 
 function openBookmarkForm() {
