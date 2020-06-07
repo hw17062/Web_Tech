@@ -21,7 +21,7 @@
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
 
-    <button onclick="createBox()" id="newBox"> New </button>
+    <button onclick="openBookmarkForm()" id="newBox"> New </button>
 
     <div id="content">
       <ul id="items">
@@ -38,6 +38,19 @@
 
         <button type="save" class="saveBtn" onclick="saveClass()">Save</button>
         <button type="button" class="saveBtn cancel" onclick="closeForm()">Close</button>
+
+      </form>
+    </div>
+
+    <div class="form-popup" id="bookmarkForm">
+      <form class="form-container" onsubmit="return false">
+        <h1>Create new bookmark</h1>
+
+        <label for="name"><b>Link</b></label>
+        <input type="text" placeholder="Enter Link" name="nameBookmark" required>
+
+        <button type="save" class="saveBtn" onclick="createBookmark()">Save</button>
+        <button type="button" class="saveBtn cancel" onclick="closeBookmarkForm()">Close</button>
 
       </form>
     </div>
