@@ -35,3 +35,9 @@ function openForm() {
 function closeForm() {
       document.getElementById("myForm").style.display = "none";
 }
+
+function saveClass() {
+    	var text = document.getElementsByName("name")[0].value;
+      $('<a href="'+'#'+'">'+text+'</a>').attr('id', 'link').appendTo('#mySidenav');
+      alert("Saved");
+}
