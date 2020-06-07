@@ -61,6 +61,10 @@ div.centred{
   	font-size: 30px;
 }
 
+#bookmarkLink {
+  display: block;
+}
+
 #items .ui-selected {
     background: red;
     color: white;

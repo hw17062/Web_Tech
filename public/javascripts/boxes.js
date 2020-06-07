@@ -3,7 +3,10 @@
 function createBookmark(){
 
     var number = Math.random() - .5;
-    $('<li>' + '</li>').attr('class', 'bookmark').attr('id','slot'+ number).appendTo( '#items' );
+    var text = document.getElementsByName("nameBookmark")[0].value;
+    $('<a href="'+text+'" target="_blank">'+'</a>').attr('id', 'bookmarkLink' + number).appendTo('#items');
+    var link = document.getElementById('bookmarkLink' + number);
+    $('<li>' + '</li>').attr('class', 'bookmark').attr('id','slot'+ number).appendTo( link );
     $(".bookmark").resizable({
               handles: 'se',
 
@@ -20,8 +23,7 @@ function createBookmark(){
       event.stopPropagation();
     })
 
-    var text = document.getElementsByName("nameBookmark")[0].value;
-    $('<a href="'+text+'">'+link+'</a>').attr('id', 'bookmarkLink').appendTo(slot);
+
   }
 
 
