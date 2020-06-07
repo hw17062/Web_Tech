@@ -22,7 +22,11 @@ function createBookmark(){
       $(slot).remove();
       event.stopPropagation();
     })
+
     $('<a href="'+text+'" target="_blank">'+ 'Go to page' + '</a>').attr('class', 'bookmarkLink').attr('id', 'pagelink' + number).appendTo(slot);
+
+    var link = document.getElementById('pagelink' + number);
+    $('<img src="' + text + '/favicon.ico" idth="200" height="40">').appendTo(link);
 
     closeBookmarkForm();
 

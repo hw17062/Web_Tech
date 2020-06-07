@@ -71,8 +71,10 @@ div.centred{
   font-size: 12px;
   display: block;
   bottom: 0;
-  width: auto;
+  width: 150px;
+  height: 150px;
   position: absolute;
+
 }
 
 .bookmarkLink:hover{
@@ -92,7 +94,7 @@ div.centred{
     padding: 0;
 }
 
-#items li {
+.bookmark {
     float: left;
     margin: 2px;
     padding: 2px;
