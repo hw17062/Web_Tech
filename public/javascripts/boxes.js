@@ -53,7 +53,3 @@ function openBookmarkForm() {
 function closeBookmarkForm() {
       document.getElementById("bookmarkForm").style.display = "none";
 }
-
-function newBookmark() {
-
-}
