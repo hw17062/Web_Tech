@@ -114,7 +114,7 @@ div.centred{
   padding-top: 60px;
 }
 
-.sidenav a {
+#link {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -123,9 +123,11 @@ div.centred{
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+
+#link:hover {
   color: #f1f1f1;
 }
+
 
 .sidenav .closebtn {
   position: absolute;
@@ -225,7 +227,7 @@ div.centred{
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  #link {font-size: 18px;}
 }
 
 /* The popup form - hidden by default */
