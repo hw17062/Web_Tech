@@ -24,7 +24,8 @@ export default class bookmarkBox extends absBox{
     $('<button>X</button>').attr('class', 'bookmarkClose').attr('id','close'+this.id).appendTo(this.slotHTML);
     // Add link
     $('<a href="'+this.link+'" target="_blank">'+ 'Go to page' + '</a>').attr('class', 'bookmarkLink').attr('id', 'pagelink' + this.id).appendTo(this.slotHTML);
-
+    var linkHTML = document.getElementById('pagelink' + id);
+    $('<img src="' + this.link + '/favicon.ico" idth="200" height="40">').appendTo(linkHTML);
 
     var closeBtn = document.getElementById('close' + this.id);
     var self = this;
