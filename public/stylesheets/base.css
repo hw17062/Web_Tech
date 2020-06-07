@@ -59,6 +59,25 @@ div.centred{
     background: #666;
   	color: #DDD;
   	font-size: 30px;
+    position: relative;
+}
+
+.bookmarkLink {
+  text-align: center;
+  cursor: pointer;
+  font-family: Geneva,Arial,Helvetica,sans-serif;
+  background: yellow;
+  color: black;
+  font-size: 12px;
+  display: block;
+  bottom: 0;
+  width: auto;
+  position: absolute;
+}
+
+.bookmarkLink:hover{
+  background: orange;
+  opacity: 1;
 }
 
 #items .ui-selected {

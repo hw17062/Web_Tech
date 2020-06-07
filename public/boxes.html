@@ -15,12 +15,21 @@
     <div id="mySidenav" class="sidenav">
       <button class="open-button" onclick="openForm()">New Class</button>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<<<<<<< HEAD
+=======
+      <a href="#" id="link">Work</a>
+      <a href="test.html" id="link">Social</a>
+>>>>>>> ada
     </div>
     <span style="font-size:50px;cursor:pointer" class="threebars" onclick="openNav()">&#9776;</span>
     <h1 id="tabName"> </h1>
     <div id="toolbar" class="toolbar">
+<<<<<<< HEAD
       <button onclick="newBox()" class="newBox" id="newBox"> New Bookmark</button>
       <!-- tabs[0].createBox('test', '#DDD') -->
+=======
+      <button onclick="openBookmarkForm()" class="newBox" id="newBox"> New Bookmark</button>
+>>>>>>> ada
     </div>
     <span style="font-size:30px;cursor:pointer" id="toolOpener" class="openToolbar" onclick="toggleTool()"><</span>
 
@@ -39,6 +48,19 @@
 
         <button type="save" class="saveBtn" onclick="newTab()">Save</button>
         <button type="button" class="saveBtn cancel" onclick="closeForm()">Close</button>
+
+      </form>
+    </div>
+
+    <div class="form-popup" id="bookmarkForm">
+      <form class="form-container" onsubmit="return false">
+        <h1>Create new bookmark</h1>
+
+        <label for="name"><b>Link</b></label>
+        <input type="text" placeholder="Enter Link" name="nameBookmark" required>
+
+        <button type="save" class="saveBtn" onclick="createBookmark()">Save</button>
+        <button type="button" class="saveBtn cancel" onclick="closeBookmarkForm()">Close</button>
 
       </form>
     </div>
