@@ -1,6 +1,5 @@
 
 
-
 function createBookmark(){
 
     var number = Math.random() - .5;
@@ -22,6 +21,14 @@ function createBookmark(){
     })
 
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+
 }
 
 function openNav() {
@@ -30,6 +37,27 @@ function openNav() {
 
 function closeNav() {
       document.getElementById("mySidenav").style.width = "0";
+}
+
+function toggleTool() {
+  dir = document.getElementById("toolOpener").innerHTML;
+  console.log(dir);
+  if (dir == "&lt;") openTool();
+  else closeTool();
+}
+
+function openTool() {
+      document.getElementById("toolbar").style.left = "92%";
+      document.getElementById("toolbar").style.width = "8%";
+      document.getElementById("toolOpener").style.left = "90%";
+      document.getElementById("toolOpener").innerHTML = ">";
+     }
+
+function closeTool() {
+      document.getElementById("toolbar").style.left = "100%";
+      document.getElementById("toolbar").style.width = "0";
+      document.getElementById("toolOpener").style.left = "98%";
+      document.getElementById("toolOpener").innerHTML = "<";
 }
 
 function openForm() {

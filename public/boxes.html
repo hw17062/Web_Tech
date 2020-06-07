@@ -18,10 +18,12 @@
       <a href="#" id="link">Study</a>
       <a href="#" id="link">Tutorials</a>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <span style="font-size:50px;cursor:pointer" class="threebars" onclick="openNav()">&#9776;</span>
 
-
-    <button onclick="openBookmarkForm()" id="newBox"> New </button>
+    <div id="toolbar" class="toolbar">
+      <button onclick="openBookmarkForm()" class="newBox" id="newBox"> New Bookmark</button>
+    </div>
+    <span style="font-size:30px;cursor:pointer" id="toolOpener" class="openToolbar" onclick="toggleTool()"><</span>
 
     <div id="content">
       <ul id="items">
@@ -65,8 +67,6 @@
               handles: 'se',
           });
       });
-
-
     </script>
 
   </body>
