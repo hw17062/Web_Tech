@@ -1,3 +1,5 @@
+import boxes from "./modules/boxes.js"
+
 
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
@@ -6,26 +8,6 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-
-function createBox(){
-
-    var number = Math.random() - .5;
-    $('<li>' + '</li>').attr('class', 'bookmark').attr('id','slot'+ number).appendTo( '#items' );
-    $(".list").resizable({
-              handles: 'se',
-
-          });
-    document.getElementById('slot' + number).style.background = getRandomColor();
-    var slot = document.getElementById('slot' + number);
-    $('<button>X</button>').attr('class', 'bookmarkClose').attr('id','close'+number).appendTo(slot);
-
-
-    var closeBtn = document.getElementById('close' + number);
-    $(closeBtn).click(function () {
-      $(slot).remove();
-      event.stopPropagation();
-    })
 }
 
 function openNav() {
