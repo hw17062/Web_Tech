@@ -39,6 +39,6 @@ function openBookmarkForm() {
       document.getElementById("bookmarkForm").style.display = "block";
     }
 
-function closebookmarkForm() {
+function closeBookmarkForm() {
       document.getElementById("bookmarkForm").style.display = "none";
 }
