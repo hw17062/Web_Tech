@@ -14,12 +14,7 @@ import user_view from "./modules/user_view.js";
 window.newTab = function newTab(){
   var name = document.getElementById("newTabName").value || "newTab" + view.tabs.length;
   view.newTab(name);
-  $('<button>'+name+'</button>')
-      .attr('id', 'tab' + name)
-      .attr('class', 'tab')
-      .click(function () {changeTab(name);})
-      .appendTo('#mySidenav');
-
+  view.updateJSON();
   closeTabForm();
 }
 
@@ -33,6 +28,7 @@ window.newBookmark = function newBookmark(){
   var name = document.getElementById("nameBookmark").value;
   var color = document.getElementById("colorBookmark").value;
   view.tabs[currentTab].createBox(link, name, color);
+  view.updateJSON();
 
   closebookmarkForm();
 }
@@ -41,7 +37,7 @@ function closebookmarkForm() {
       document.getElementById("bookmarkForm").style.display = "none";
 }
 
-function changeTab (to){
+window.changeTab = function changeTab (to){
   var newTab = 0;
   for (var i = 0; i < view.tabs.length; i ++){
     if(view.tabs[i].name == to) newTab = i;
@@ -55,6 +51,5 @@ function changeTab (to){
 
 // This is an object used to create,load and store the user's custom layout
 var view = new user_view();
-newTab();
 var currentTab = 0;
 document.getElementById("tabName").innerHTML = view.tabs[currentTab].name;

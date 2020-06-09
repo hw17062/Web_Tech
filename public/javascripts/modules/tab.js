@@ -33,9 +33,16 @@ export default class tab{
     });
   }
 
+  // remove selected box, then update the array to fill the gap
   removeBox(id){
     this.boxes[id].deleteBox();
     delete this.boxes[id];
+    for(var i = id+1; i < this.boxes.length; i++){
+      this.boxes[i - 1] = new bookmarkBox(i - 1, this.boxes[i].link, this.boxes[i].name, this.boxes[i].color, this);
+    }
+    this.boxes[this.boxes.length - 1].deleteBox();
+    this.boxes.pop();
+
   }
 
 }
