@@ -65,7 +65,7 @@ div.centred{
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
-   height:105%;
+   height:100%;
    width: 100%;
    position: fixed;
  }
@@ -119,6 +119,7 @@ div.centred{
 	 -webkit-animation-duration: 15s;
 	 -webkit-animation-timing-function: linear;
 	 -webkit-animation-iteration-count: infinite;
+   height:105%;
  }
 
 .bookmarkClose{
