@@ -1,6 +1,5 @@
 
 import Tab from "./tab.js";
-import Cookies from './js.cookie.js'
 
 // Code for a new tab
 //
@@ -19,14 +18,17 @@ export default class user_view{
   }
 
   newTab(name){
+    console.log(this.tabs);
     var nameCounter = 0;
-    for (var i = i; i < this.tabs.length; i++){
-      if (this.tabs[i].name == name) nameCounter++;
-    }
+    var tmpName = name;
+      for (var i = 0; i < this.tabs.length; i++){
+        if (this.tabs[i].name == tmpName) {
+          nameCounter++;
+          tmpName = name + nameCounter;
+        }
+      }
 
-    if (nameCounter > 0){
-      name += nameCounter;
-    }
+    name = tmpName;
     this.tabs.push(new Tab(name, this));
 
     $('<button>'+name+'</button>')
@@ -43,16 +45,18 @@ export default class user_view{
 
     var closeBtn = document.getElementById('closeTab' + name);
     var self = this;
-    $(closeBtn).click(function () {
-      self.removeTab(name);
-    });
+    $(closeBtn).click(function (){self.removeTab(name, self)});
 
     this.updateJSON();
   }
 
-  removeTab(name){
-    delete this.tabs[name];
-    this.updateJSON();
+  removeTab(name, self){
+    for (var i = 0; i < self.tabs.length; i++){
+      if (self.tabs[i].name == name )self.tabs.splice(i, 1);
+    }
+    var tabHTML = document.getElementById('tab' + name);
+    $(tabHTML).remove();
+    self.updateJSON();
   }
 
   removeBox(){
@@ -62,13 +66,19 @@ export default class user_view{
   buildFromJSON(string){
     this.jsonString = string;
 
-    if(this.jsonString != ''){
-      var allObj = JSON.parse(this.jsonString);
-      for (var tab = 0; tab < allObj.length; tab++){
-        this.newTab(allObj[tab].name)
-        for(var box = 0; box < allObj[tab].boxes.length; box++){
-          this.tabs[tab].createBox(allObj[tab].boxes[box].link, allObj[tab].boxes[box].name, allObj[tab].boxes[box].color);
+    if(this.jsonString != '' && JSON.stringify(this.jsonString) != '"[null]"'){
+      try{
+        var allObj = JSON.parse(this.jsonString);
+        console.log("building from JSON with " + JSON.stringify(this.jsonString));
+        for (var tab = 0; tab < allObj.length; tab++){
+          this.newTab(allObj[tab].name)
+          for(var box = 0; box < allObj[tab].boxes.length; box++){
+            this.tabs[tab].createBox(allObj[tab].boxes[box].link, allObj[tab].boxes[box].name, allObj[tab].boxes[box].color);
+          }
         }
+      }
+      catch{
+        this.newTab("My First Tab");
       }
     }
     else{
@@ -79,10 +89,10 @@ export default class user_view{
   // This will take the current user's layout and convert it into JSON
   updateJSON(){
     this.jsonString = JSON.stringify(this.tabs, this.getCircularReplacer());
-    Cookies.set("view",this.jsonString, {expires: 1, SameSite: 'Lax', secure:true});
     const Http = new XMLHttpRequest();
     const url='/updateView';
     Http.open("POST", url);
+    Http.setRequestHeader("Content-Type", "application/json");
     Http.send(this.jsonString);
   }
 

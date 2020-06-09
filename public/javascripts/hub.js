@@ -7,7 +7,6 @@
 // Each tab can have multiple boxes and each user can have multiple tabs
 
 import user_view from "./modules/user_view.js";
-import Cookies from './modules/js.cookie.js'
 
 
 // get any saved layouts from the server

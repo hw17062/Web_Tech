@@ -4,10 +4,11 @@ var secured = require('../lib/middleware/secured');
 const fs = require('fs');
 var cookieParser = require('cookie-parser');
 var path = require('path');
+var bodyParser = require('body-parser');
 
 
 router.post('/',secured(), function(req, res, next) {
-  let newView = req.cookies.view.toString();
+  let newView = JSON.stringify(req.body);
   let loc = path.join(__dirname,'../userStore/userSettings/', req.session.configFile +'.config');
   console.log(loc);
   // console.log(newView.toString());
@@ -16,8 +17,9 @@ router.post('/',secured(), function(req, res, next) {
       console.log(err);
       throw err;
     }
-    console.log("file saved");
-    req.session.config = newView;
+
+    console.log(newView);
+    res.sendStatus(200);
 
   });
 });

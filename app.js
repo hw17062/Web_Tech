@@ -8,6 +8,9 @@ var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 var flash = require('connect-flash');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 var userInViews = require('./lib/middleware/userInViews');
