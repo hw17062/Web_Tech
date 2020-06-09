@@ -22,10 +22,13 @@ section.right { float: right; margin: 0 4% 0 2%; }
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 #content {
-  margin-left: 5%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -41,6 +44,81 @@ div.centred{
   -webkit-user-select: none;
   user-select: none;
 }
+
+@keyframes moveBG {
+  0%   {top: -50px;}
+  50%  {top: 0px}
+  100% {top: -50px;}
+}
+
+@keyframes moveClouds {
+  0%   {left: 0px;}
+  50%  {left: 50px}
+  100% {left: 0px;}
+}
+
+
+
+.layer {
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height:100%;
+   width: 100%;
+   position: fixed;
+ }
+
+ .layer-bg {
+   background-image: url("../images/default background.png");
+ }
+
+
+ .layer-1 {
+   background-image: url("../images/default background/background1.png");
+
+ }
+
+ .layer-2 {
+   background-image: url("../images/default background/background2.png");
+
+ }
+
+ .layer-3 {
+   background-image: url("../images/default background/background3.png");
+
+ }
+
+ .layer-4 {
+   background-image: url("../images/default background/background4.png");
+
+ }
+
+ .layer-5 {
+   background-image: url("../images/default background/background5.png");
+   -webkit-animation-name: moveClouds;
+	 -webkit-animation-duration: 30s;
+	 -webkit-animation-timing-function: linear;
+	 -webkit-animation-iteration-count: infinite;
+ }
+
+ .layer-6 {
+   background-image: url("../images/default background/background6.png");
+
+ }
+
+ .layer-7 {
+   background-image: url("../images/default background/background7.png");
+
+ }
+
+ .layer-8 {
+   background-image: url("../images/default background/background8.png");
+   -webkit-animation-name: moveBG;
+	 -webkit-animation-duration: 15s;
+	 -webkit-animation-timing-function: linear;
+	 -webkit-animation-iteration-count: infinite;
+   height:105%;
+ }
 
 .bookmarkClose{
 	float: right;
@@ -76,8 +154,10 @@ div.centred{
   font-size: 12px;
   display: block;
   bottom: 0;
-  width: auto;
+  width: 150px;
+  height: 150px;
   position: absolute;
+
 }
 
 .bookmarkLink:hover{
