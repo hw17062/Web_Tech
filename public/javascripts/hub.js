@@ -14,10 +14,8 @@ import Cookies from './modules/js.cookie.js'
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.onreadystatechange = function() {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
-          if (xmlHttp.responseText != ''){
-            Cookies.set("view",xmlHttp.responseText, {expires: 7, SameSite: 'Lax', secure:true});
-            view.buildFromJSON();
-          }
+          view.buildFromJSON(xmlHttp.responseText);
+          document.getElementById("tabName").innerHTML = view.tabs[currentTab].name;
         }
 };
 xmlHttp.open("GET", "/getview", true); // true for asynchronous
@@ -65,4 +63,3 @@ window.changeTab = function changeTab (to){
 // This is an object used to create,load and store the user's custom layout
 var view = new user_view();
 var currentTab = 0;
-document.getElementById("tabName").innerHTML = view.tabs[currentTab].name;

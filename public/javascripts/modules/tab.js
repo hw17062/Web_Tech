@@ -3,16 +3,14 @@
 // scenarios
 
 import bookmarkBox from "./bookmarkBox.js";
+import user_view from "./user_view.js";
 
 export default class tab{
-  constructor(name){
+  constructor(name, view){
     this.name = name;
     this.boxes = [];
-    var self = this;
-  }
 
-  loadTab(){
-    return
+    this.view = view;
   }
 
   createBox(link,name, color){
@@ -40,8 +38,11 @@ export default class tab{
     for(var i = id+1; i < this.boxes.length; i++){
       this.boxes[i - 1] = new bookmarkBox(i - 1, this.boxes[i].link, this.boxes[i].name, this.boxes[i].color, this);
     }
-    this.boxes[this.boxes.length - 1].deleteBox();
+    if (id > 0){
+      this.boxes[this.boxes.length - 1].deleteBox();
+    }
     this.boxes.pop();
+    this.view.updateJSON();
 
   }
 

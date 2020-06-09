@@ -164,6 +164,22 @@ div.centred{
   background: gray;
 }
 
+.tabClose{
+  width: 10%;
+  padding: 1%;
+  float: left;
+  background: red;
+  border: none;
+  height: 100%;
+  opacity: 0.5;
+  margin: 3%;
+  cursor: pointer;
+}
+
+.tabClose:hover:{
+  opacity: 1;
+}
+
 .navBtn{
   font-size:50px;
   cursor:pointer;
