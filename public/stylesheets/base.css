@@ -346,6 +346,10 @@ div.centred{
   background-color: #09e609;
 }
 
+.toolbarHeader{
+  style="padding-bottom:0.5em"
+}
+
 .openToolbar {
   left: 95%;
   top: 0;
@@ -360,6 +364,8 @@ div.centred{
   height: 100%;
   writing-mode: vertical-rl;
   text-orientation: upright;
+  font-size:30px;
+  cursor:pointer;
 }
 
 .openToolbar:hover {
