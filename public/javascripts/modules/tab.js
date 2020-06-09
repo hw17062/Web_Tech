@@ -13,7 +13,7 @@ export default class tab{
 
 
   createBox(link,name, color){
-    var id = boxes.lenth;
+    var id = this.boxes.length;
     this.boxes.push(new bookmarkBox( id, link,name, color, this));
   }
 
