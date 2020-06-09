@@ -230,6 +230,7 @@ div.centred{
   background-color: #111;
   overflow-x: hidden;
   transition: 0.2s;
+  opacity: 0.8;
 }
 
 .tab {
@@ -312,6 +313,7 @@ div.centred{
   color: white;
   text-align: center;
   font-size: 1.5em;
+  opacity: 0.8;
 }
 
 .toolbar a {
@@ -345,22 +347,24 @@ div.centred{
 }
 
 .openToolbar {
-  left: 96%;
+  left: 95%;
   top: 0;
   position: fixed;
   border: none;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 1;
   width: 5%;
   border-radius: 8px;
   transition: 0.5s;
   text-align: center;
   height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
 .openToolbar:hover {
   opacity: 1;
-  background: #AAAAAA;
+  background: rgba(200, 200, 200, 0.6);
 }
 
 @media screen and (max-height: 450px) {

@@ -21,15 +21,18 @@ function toggleTool() {
 function openTool() {
   document.getElementById("toolbar").style.left = "90%";
   document.getElementById("toolbar").style.width = "10%";
-  document.getElementById("toolOpener").style.left = "86%";
-  document.getElementById("toolOpener").innerHTML = ">";
+  document.getElementById("toolOpener").style.left = "85%";
+  document.getElementById("toolOpener").innerHTML = "> toolbar >";
+  document.getElementById("toolOpener").onclick = function() {closeTool()};
  }
 
 function closeTool() {
   document.getElementById("toolbar").style.left = "100%";
   document.getElementById("toolbar").style.width = "0";
-  document.getElementById("toolOpener").style.left = "96%";
-  document.getElementById("toolOpener").innerHTML = "<";
+  document.getElementById("toolOpener").style.left = "95%";
+  document.getElementById("toolOpener").innerHTML = "< toolbar <";
+  document.getElementById("toolOpener").onclick = function() {openTool()};
+
 }
 
 function openTabForm() {
