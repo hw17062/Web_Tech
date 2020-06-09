@@ -4,7 +4,7 @@ var path = require('path');
 
 
 /* GET users listing. */
-router.get('/boxes', function(req, res, next) {
+router.get('/hub', function(req, res, next) {
   res.sendFile('boxes.html', { root: path.join(__dirname, '../public') });
 });
 
