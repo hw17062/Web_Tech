@@ -16,7 +16,7 @@ export default class tab{
   }
 
   createBox(link,name, color){
-    var id = Math.random() - .5;
+    var id = boxes.lenth;
     this.boxes.push(new bookmarkBox( id, link,name, color, this));
   }
 
