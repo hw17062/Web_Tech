@@ -9,13 +9,7 @@ export default class tab{
   constructor(name, view){
     this.name = name;
     this.boxes = [];
-
-<<<<<<< HEAD
-    this.view = view;
   }
-=======
->>>>>>> 3044587d1c571ddd0946d18c0c9f6447b9f27fa7
-
   createBox(link,name, color){
     var id = this.boxes.length;
     this.boxes.push(new bookmarkBox( id, link,name, color, this));

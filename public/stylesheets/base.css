@@ -143,6 +143,12 @@ div.centred{
     border: 1px solid gray;
   	font-size: 30px;
     position: relative;
+    opacity: 0.6;
+    transition-duration: 0.5s;
+}
+
+.bookmark:hover{
+  opacity: 1;
 }
 
 .bookmarkLink {
