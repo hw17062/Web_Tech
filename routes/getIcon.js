@@ -12,7 +12,7 @@ router.get('/',secured(), function(req, res, next) {
       url: url,
       sort: 'des',
       limit: 10,
-      checkStatus: false,
+      checkStatus: true,
       followRedirectsCount: 5
     }).then(output => {return output});
   };
@@ -20,7 +20,6 @@ router.get('/',secured(), function(req, res, next) {
   let result = prom(req.query.url);
 
   result.then( function(output){
-    console.log(output);
     if (output.icons != null) res.send(output.icons[0].link);
   })
 

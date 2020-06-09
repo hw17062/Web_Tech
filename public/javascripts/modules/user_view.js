@@ -15,14 +15,12 @@ import Cookies from './js.cookie.js'
 export default class user_view{
   constructor(){
     this.tabs = []
-    var saved_view = Cookies.get("view");
-    this.jsonString = ""
-    if (saved_view != undefined){
-      this.jsonString = saved_view;
-      console.log(this.jsonString);
+    this.jsonString = Cookies.get("view");
+    if (this.jsonString != undefined){
       this.buildFromJSON();
     }
     else{
+      this.jsonString = '';
       this.newTab("My First Tab");
     }
   }
@@ -34,7 +32,7 @@ export default class user_view{
         .attr('class', 'tab')
         .click(function () {changeTab(name);})
         .appendTo('#mySidenav');
-    this.updateJSON
+    this.updateJSON();
   }
 
   removeTab(name){
@@ -42,6 +40,7 @@ export default class user_view{
   }
 
   buildFromJSON(){
+    this.jsonString = Cookies.get('view');
     var allObj = JSON.parse(this.jsonString);
     for (var tab = 0; tab < allObj.length; tab++){
       this.newTab(allObj[tab].name)
@@ -55,6 +54,10 @@ export default class user_view{
   updateJSON(){
     this.jsonString = JSON.stringify(this.tabs, this.getCircularReplacer());
     Cookies.set("view",this.jsonString, {expires: 7, SameSite: 'Lax', secure:true});
+    const Http = new XMLHttpRequest();
+    const url='/updateView';
+    Http.open("POST", url);
+    Http.send(this.jsonString);
   }
 
   getCircularReplacer(){

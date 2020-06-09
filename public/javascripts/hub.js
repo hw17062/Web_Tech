@@ -7,8 +7,21 @@
 // Each tab can have multiple boxes and each user can have multiple tabs
 
 import user_view from "./modules/user_view.js";
+import Cookies from './modules/js.cookie.js'
 
 
+// get any saved layouts from the server
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = function() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+          if (xmlHttp.responseText != ''){
+            Cookies.set("view",xmlHttp.responseText, {expires: 7, SameSite: 'Lax', secure:true});
+            view.buildFromJSON();
+          }
+        }
+};
+xmlHttp.open("GET", "/getview", true); // true for asynchronous
+xmlHttp.send(null);
 
 
 window.newTab = function newTab(){
