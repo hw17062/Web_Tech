@@ -11,13 +11,10 @@ export default class tab{
     var self = this;
   }
 
-  loadTab(){
-    return
-  }
 
-  createBox(link, color){
-    var id = Math.random() - .5;
-    this.boxes.push(new bookmarkBox( id, link, color, this));
+  createBox(link,name, color){
+    var id = boxes.lenth;
+    this.boxes.push(new bookmarkBox( id, link,name, color, this));
   }
 
   hideBoxes(){

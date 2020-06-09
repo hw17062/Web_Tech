@@ -12,12 +12,18 @@ var tabs = [];
 tabs["Home"] = new Tab("Home")
 var currentTab = "Home";
 document.getElementById("tabName").innerHTML = currentTab;
-$('<button>'+currentTab+'</button>').attr('id', 'tab' + currentTab).attr('class', 'tab').click(function () {changeTab("Home")}).appendTo('#mySidenav');
+$('<button>'+currentTab+'</button>')
+    .attr('id', 'tab' + currentTab)
+    .attr('class', 'tab')
+    .click(function () {changeTab("Home")})
+    .appendTo('#mySidenav');
 
 
 window.newBookmark = function newBookmark(){
-  var link = document.getElementById("nameBookmark").value;
-  tabs[currentTab].createBox(link, '#ddd');
+  var link = document.getElementById("linkBookmark").value;
+  var name = document.getElementById("nameBookmark").value;
+  var color = document.getElementById("colorBookmark").value;
+  tabs[currentTab].createBox(link, name, color);
 
   closebookmarkForm()
 }
@@ -29,7 +35,11 @@ function closebookmarkForm() {
 window.newTab = function newTab(){
   var name = document.getElementById("newTabName").value;
   tabs[name] = new Tab(name);
-  $('<button>'+name+'</button>').attr('id', 'tab' + name).attr('class', 'tab').click(function () {changeTab(name)}).appendTo('#mySidenav');
+  $('<button>'+name+'</button>')
+      .attr('id', 'tab' + name)
+      .attr('class', 'tab')
+      .click(function () {changeTab(name);})
+      .appendTo('#mySidenav');
 
   closeTabForm();
 }
