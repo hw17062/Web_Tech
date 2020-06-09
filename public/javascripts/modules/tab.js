@@ -15,9 +15,9 @@ export default class tab{
     return
   }
 
-  createBox(link, color){
-    var id = Math.random() - .5;
-    this.boxes.push(new bookmarkBox( id, link, color, this));
+  createBox(link,name, color){
+    var id = this.boxes.length;
+    this.boxes.push(new bookmarkBox( id, link,name, color, this));
   }
 
   hideBoxes(){

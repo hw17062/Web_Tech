@@ -1,0 +1,81 @@
+<!DOCTYPE xhtml>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    lang="en-GB" xml:lang="en-GB">
+  <head>
+    <link rel="stylesheet" href="./stylesheets/base.css" />
+    <script type = "module" src="./javascripts/hub.js"></script>
+    <script type = "text/javascript" src="./javascripts/navigation.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+    <meta charset="UTF-8"/>
+    <title>Bookmarks</title>
+  </head>
+  <body>
+
+    <div id="mySidenav" class="sidenav">
+      <button class="new-tab" onclick="openTabForm()">New Tab</button>
+    </div>
+    <span class="navBtn" id ="myNavBtn" onclick="openNav()">&#9776;</span>
+    <h1 id="tabName"> </h1>
+
+
+    <div id="toolbar" class="toolbar">
+      <p style="padding-bottom:0.5em">Toolbar</p>
+      <button onclick="openBookmarkForm()" class="newBox" id="newBox"> New Bookmark</button>
+      <!-- tabs[0].createBox('test', '#DDD') -->
+    </div>
+    <span style="font-size:30px;cursor:pointer" id="toolOpener" class="openToolbar" onclick="toggleTool()"><</span>
+
+    <div id="content">
+      <ul id="items">
+        
+      </ul>
+    </div>
+
+    <div class="form-popup" id="formNewTab">
+      <form class="form-container" onsubmit="return false">
+        <h1>Create new category</h1>
+
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" id="newTabName" required>
+
+        <button type="save" class="saveBtn" onclick="newTab()">Save</button>
+        <button type="button" class="saveBtn cancel" onclick="closeTabForm()">Close</button>
+
+      </form>
+    </div>
+
+    <div class="form-popup" id="bookmarkForm">
+      <form class="form-container" onsubmit="return false">
+        <h1>Create new bookmark</h1>
+
+        <label for="nameBookmark"><b>name</b></label>
+        <input type="text" placeholder="Enter Name" name="nameBookmark" id="nameBookmark" required>
+        <label for="linkBookmark"><b>Link</b></label>
+        <input type="text" placeholder="Enter Link" name="linkBookmark" id="linkBookmark" required>
+        <label for="colorBookmark"><b>Color</b></label>
+        <input type="color" name="colorBookmark" id="colorBookmark" required>
+
+        <button type="save" class="saveBtn" onclick="newBookmark()">Save</button>
+        <button type="button" class="saveBtn cancel" onclick="closeBookmarkForm()">Close</button>
+
+      </form>
+    </div>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+
+          $("#items").sortable();
+
+          $(".bookmark").resizable({
+              handles: 'se',
+          });
+      });
+
+
+
+    </script>
+
+  </body>
+</html>
